@@ -16,7 +16,7 @@ class CreateTestapisTable extends Migration
         Schema::create('testapis', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->text('jsonData');
+            $table->json('jsonData');
         });
     }
 
