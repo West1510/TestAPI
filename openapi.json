@@ -142,8 +142,8 @@
           }
         ],
         "responses": {
-          "default": {
-            "description": "Default error sample response"
+          "200": {
+            "description": "OK"
           }
         }
       }
