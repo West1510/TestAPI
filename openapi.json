@@ -1,0 +1,153 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "TestAPI",
+    "description": "API для скачивания, распаковки и парсинга XML файлов в формат JSON с ftp сервера и занесения их содержимого в базу данных PostgreSQL",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://virtserver.swaggerhub.com/West15104/TestAPI/1.0.0"
+    }
+  ],
+  "paths": {
+    "/collect": {
+      "get": {
+        "summary": "Скачивает и сохраняет данные в базу",
+        "description": "Скачивает zip архивы с ftp сервера, распаковывает, парсит в JSON и заносит в базу данных, возвращая, либо сообщение о том, что все выполнено, либо ошибку",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/data": {
+      "get": {
+        "summary": "Выводит все содержимое базы данных",
+        "description": "Выводит все содержимое базы данных целиком в формате JSON",
+        "responses": {
+          "default": {
+            "description": "Возвращает массив JSON",
+            "content": {}
+          }
+        }
+      },
+      "post": {
+        "summary": "Добавляет данные в базу данных",
+        "description": "Добавляет данные в базу данных",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "query",
+            "description": "Данные которые нужно добавить",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "jsonData": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "201 Created",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/data/{id}": {
+      "get": {
+        "summary": "Выводит содержимое базы по id",
+        "description": "Выводит все содержимое базы данных по указанному id в формате JSON",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Data ID",
+            "required": true,
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Возвращает массив JSON",
+            "content": {}
+          }
+        }
+      },
+      "delete": {
+        "summary": "Удаляет содержимое по id",
+        "description": "Удаляет содержимое базы данных по указанному id",
+        "operationId": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Data ID",
+            "required": true,
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {}
+          }
+        }
+      },
+      "put": {
+        "summary": "Обновляет содержимое по id",
+        "description": "Обновляет содержимое базы данных по указанному id",
+        "operationId": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Data ID",
+            "required": true,
+            "schema": {}
+          },
+          {
+            "in": "query",
+            "name": "query",
+            "description": "Данные которые нужно обновить",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "jsonData": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default error sample response"
+          }
+        }
+      }
+    }
+  },
+  "components": {}
+}
